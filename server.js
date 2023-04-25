@@ -18,15 +18,54 @@ app.use(express.static('public'));
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
   });
+//   app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, './public/index.html'));
+// });
+
 
 // This route handles GET requests to the root URL and sends a message with a link to /api/notes as a response
-app.get('/', (req, res) => res.send('Visit http://localhost:3001/api/notes'));
+// app.get('/', (req, res) => res.send('Visit http://localhost:3001/api/notes'));
 
 // Route to handle GET requests to /api/notes endpoint and sends the noteData object from the db.json file as a response
 app.get('/api/notes', (req, res) => res.json(noteData));
 
+// Route to handle POST requests to /api/notes endpoint and sends the noteData object from the db.json file as a response
 
-// Define a route for the home page and send a response
+// get the data from the request body, add it to noteData, then return the new noteData object as a response
+app.post('/api/notes', (req, res) => {
+    // Destructuring assignment for the items in req.body
+    const { title, text } = req.body;
+
+    // If all the required properties are present
+    if (title && text) {
+        // Variable for the object we will save
+        const newNote = {
+            title,
+            text,
+        };
+
+        // Obtain a unique id for the note
+        const uniqueId = noteData.length + 1;
+        // Add the unique id to the note object
+        newNote.id = uniqueId;
+        // Push the note object to the noteData array
+        noteData.push(newNote);
+
+        // Write the noteData array to the db.json file
+        fs.writeFileSync(
+            path.join(__dirname, './db/db.json'),
+            JSON.stringify(noteData, null, 2)
+        );
+
+        // Return the new note as response
+        res.json(newNote);
+    } else {
+        res.json('Error in posting note');
+    }
+});
+
+
+
 
 
 
