@@ -1,7 +1,8 @@
 // require express
 const express = require('express');
 const path = require('path');
-
+// Require the JSON file and assign it to a variable called noteData
+const noteData = require('./db/db.json');
 
 // Import the Express.js library and create an instance of it
 const app = express();
@@ -10,6 +11,12 @@ const PORT = 3002;
 
 // Serve static files in the 'public' folder
 app.use(express.static('public'));
+
+
+app.get('/', (req, res) => res.send('Visit http://localhost:3001/api/notes'));
+
+app.get('/api/notes', (req, res) => res.json(noteData));
+
 
 // Define a route for the home page and send a response
 // app.get('/', (req, res) => res.send('Navigate to /send or /routes'));
