@@ -15,6 +15,10 @@ const PORT = 3002;
 app.use(express.static('public'));
 
 
+// Middleware to parse JSON data in request body
+app.use(express.json());
+
+
 // Route to handle GET requests to /notes and sends the notes.html file as a response
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
@@ -34,40 +38,65 @@ app.get('/api/notes', (req, res) => res.json(noteData));
 
 // get the data from the request body, add it to noteData, then return the new noteData object as a response
 app.post('/api/notes', (req, res) => {
+    console.info(`${req.method} request received to add a note`);
 
-     // Set the Content-Type header to application/json
-     res.setHeader('Content-Type', 'application/json');
-     
-    // Destructuring assignment for the items in req.body
-    const { title, text } = req.body;
 
-    // If all the required properties are present
-    if (title && text) {
-        // Variable for the object we will save
-        const newNote = {
-            title,
-            text,
+    let response;
+    
+    //check if there is data in the request body
+    if (req.body) {
+        response = {
+            status: 'success',
+            data: req.body
         };
 
-        // Obtain a unique id for the note
-        const uniqueId = noteData.length + 1;
-        // Add the unique id to the note object
-        newNote.id = uniqueId;
-        // Push the note object to the noteData array
-        noteData.push(newNote);
+        //add a new note to the array
+        noteData.push(req.body);
 
-        // Write the noteData array to the db.json file
+        //write the noteData array to the db.json file
         fs.writeFileSync(
             path.join(__dirname, './db/db.json'),
             JSON.stringify(noteData, null, 2)
         );
-
-        // Return the new note as response
-        res.json(newNote);
+        res.json(response);
     } else {
         res.json('Error in posting note');
     }
+
 });
+     // Set the Content-Type header to application/json
+    //  res.setHeader('Content-Type', 'application/json');
+     
+    // Destructuring assignment for the items in req.body
+//     const { title, text } = req.body;
+
+//     // If all the required properties are present
+//     if (title && text) {
+//         // Variable for the object we will save
+//         const newNote = {
+//             title,
+//             text,
+//         };
+
+//         // Obtain a unique id for the note
+//         const uniqueId = noteData.length + 1;
+//         // Add the unique id to the note object
+//         newNote.id = uniqueId;
+//         // Push the note object to the noteData array
+//         noteData.push(newNote);
+
+//         // Write the noteData array to the db.json file
+//         fs.writeFileSync(
+//             path.join(__dirname, './db/db.json'),
+//             JSON.stringify(noteData, null, 2)
+//         );
+
+//         // Return the new note as response
+//         res.json(newNote);
+//     } else {
+//         res.json('Error in posting note');
+//     }
+// });
 
 
 
