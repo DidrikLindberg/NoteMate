@@ -1,15 +1,14 @@
-// This is a mini-app that only handles the /tips route
-// it is imported into the main express app in server.js
 
+// Import the Router function from the express module
 const miniApp = require('express').Router();
-// const miniApp = express.Router();
-// Import our modular routers for /tips and /feedback
+
+// Import the modular routers for /api and /notes
 const apiRouter = require('./apiRoutes');
-// const feedbackRouter = require('./feedback');
+const htmlkRouter = require('./htmlRoutes');
 
-// const app = express();
+// Set up the middleware to use the /api and /notes routers
+miniApp.use('/api', apiRouter);
+miniApp.use('/notes', htmlkRouter);
 
-miniApp.use('/api/notes', apiRouter);
-// miniApp.use('/feedback', feedbackRouter);
-
+// Export the miniApp for use in other files
 module.exports = miniApp;
