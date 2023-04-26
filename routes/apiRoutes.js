@@ -1,6 +1,11 @@
 const note = require('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
+const db = require('../db/db.json');
+
+note.get('/api/notes', (req, res) => res.json(db)); 
+    
+
 
 // POST Route for submitting notes
 note.post('/notes', (req, res) => {
