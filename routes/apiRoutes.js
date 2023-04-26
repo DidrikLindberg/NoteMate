@@ -3,7 +3,7 @@ const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 
 // POST Route for submitting notes
-note.post('/api/notes', (req, res) => {
+note.post('/notes', (req, res) => {
     // Log that a POST request was received
     console.info(`${req.method} request received to submit note`);
 
@@ -36,3 +36,6 @@ note.post('/api/notes', (req, res) => {
         res.json('Error in posting note');
     }
 });
+
+
+module.exports = note;
