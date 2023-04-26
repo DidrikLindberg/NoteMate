@@ -40,9 +40,9 @@ app.get('/notes', (req, res) => {
 // Route to handle GET requests to /api/notes endpoint and sends the noteData object from the db.json file as a response
 app.get('/api/notes', (req, res) => res.json(noteData));
 
-// Route to handle POST requests to /api/notes endpoint and sends the noteData object from the db.json file as a response
+// // Route to handle POST requests to /api/notes endpoint and sends the noteData object from the db.json file as a response
 
-// get the data from the request body, add it to noteData, then return the new noteData object as a response
+// // get the data from the request body, add it to noteData, then return the new noteData object as a response
 app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request received to add a note`);
 
@@ -70,6 +70,10 @@ app.post('/api/notes', (req, res) => {
     }
 
 });
+
+
+
+
      // Set the Content-Type header to application/json
     //  res.setHeader('Content-Type', 'application/json');
      
