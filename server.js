@@ -8,15 +8,21 @@ const fs = require('fs');
 
 // Import the Express.js library and create an instance of it
 const app = express();
-// Set the port number to 300
+// Set the port number to 3002
 const PORT = 3002;
+
+// Middleware to parse JSON data in request body
+app.use(express.json());
 
 // Serve static files in the 'public' folder
 app.use(express.static('public'));
 
 
-// Middleware to parse JSON data in request body
-app.use(express.json());
+
+// GET Route for homepage
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
 
 
 // Route to handle GET requests to /notes and sends the notes.html file as a response
