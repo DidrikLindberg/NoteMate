@@ -8,7 +8,7 @@ const fs = require('fs');
 // Import the Express.js library and create an instance of it
 const app = express();
 // Set the port number to 3002
-const PORT = 3002;
+const PORT = process.env.PORT ||3002;
 
 // Serve static files in the 'public' folder
 app.use(express.static('public'));
