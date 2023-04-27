@@ -13,7 +13,6 @@ class Add {
     read(){
         // Define a read method that reads a file asynchronously
         return readASync("db/db.json", "UTF-8")
-
     }
     write(payload){
         // Define a write method that writes a file asynchronously
@@ -22,7 +21,6 @@ class Add {
     readAll(){
         // Define a readAll method that reads all the notes in a file and returns them as an array of JSON objects
         return this.read().then(notes => [...JSON.parse(notes)])
-        
     }
     // Define a addNew method that creates a new note with a UUID, a title, and a text payload and appends it to the file
     addNew(payload) {
