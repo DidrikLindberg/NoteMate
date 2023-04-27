@@ -1,12 +1,18 @@
 # noteMate
 
+[![JavaScript](https://img.shields.io/badge/-JavaScript-yellow)](https://www.javascript.com/)
+[![Express](https://img.shields.io/badge/Express.js-gray?style=rounded-square)](https://expressjs.com/)
+[![Node.js Badge](https://img.shields.io/badge/Node.js-green)](https://nodejs.org/en)
+
+
+## [Deployed Site](https://notemate.herokuapp.com/notes)
+
   ## Description
   This is a simple note-taking application built using Node.js and Express.js on the backend and HTML, CSS, and JavaScript on the frontend. The application allows users to write and save notes, as well as delete existing notes. The backend is served through the server.js file, which uses express to create a server and listen for incoming requests on port 3002. The routes folder contains two separate files that handle the server's different endpoints: apiRoutes.js and htmlRoutes.js.
 
   To use the application, users can navigate to the /notes endpoint, or click on "Get Started" and start writing and saving notes. The application stores the notes in a local database, which can be accessed through the API endpoints at /api/notes.
 
   ## Table of Contents
-  * [Installation](#installation)
 
   * [Usage](#usage)
 
@@ -18,8 +24,7 @@
 
   * [Questions](#questions)
 
-  ## Installation
-  run "npm i" in the intetgrated terminal
+ 
 
   ## Usage
   to generate a customizable README file efficiently
