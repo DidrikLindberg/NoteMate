@@ -37,4 +37,4 @@
 
   ## Questions
   If you have any questions about the repo, open an issue or [contact me directly](mailto:lindberg.didrik@gmail.com). You can find more of my work at https://github.com/DidrikLindberg
-  
+  s
