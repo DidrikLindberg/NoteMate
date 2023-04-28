@@ -25,7 +25,13 @@
 
   * [Questions](#questions)
 
- 
+  ## Preview of Deployed Site
+  ![img](/assets/imgs/NoteMate.jpg)
+
+  ## Api/Notes Endpoint
+  ![img](/assets/imgs/apinotes.jpg)
+
+
 
   ## Usage
   With NoteMate, users can easily create, edit, and delete notes, and access their notes from any device with an internet connection. 
